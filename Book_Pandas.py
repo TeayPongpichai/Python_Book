@@ -114,3 +114,37 @@ import pandas as pd
 uri = 'score_ageb.xlsx'
 df = pd.read_excel(uri)
 df
+
+#อ่านไฟล์ Excel ทั้งหมด ทุกคอลัมน์ และใช้คอลัมน์อื่นเป็น Index
+df = pd.read_excel(uri,index_col='Name')
+df
+
+#อ่าน Excel บางคอลัมน์ และข้าม Header
+uri = 'score_ageb.xlsx'
+cols = 'a,c:d'
+df = pd.read_excel(uri,sheet_name='MySheet1',usecols=cols,header=3)
+df.head()
+
+#อ่าน Excel บางคอลัมน์ ข้าม Header และใช้คอลัมน์ Name เป็น Index
+df = pd.read_excel(uri,sheet_name='MySheet1',usecols=cols,index_col='Name')
+df
+df.loc['Tim']
+df.loc['Tim']['Score']
+df.loc['Tim']['Section']
+df.sort_index() #Sort แถวตาม Index
+
+mycolumns = ['Student','Math','Comp','Year']
+df = pd.read_excel(uri,names=mycolumns,index_col='Student')
+df['Comp']['Tim']
+
+uri = 'score_ageb.csv'
+cols = ['Name','Score']
+df = pd.read_csv(uri,usecols=cols,nrows=4,skiprows=[1,2]) #อ่านบางคอลัมน์ ข้ามแถว และกำหนดจำนวนแถว
+df
+
+uri = 'score_ageb.csv'
+df = pd.read_csv(uri)
+df.head()
+df.head(10)
+df.tail()
+df.sample(3) #สุุ่มเลือกแถวตามจำนวนที่ต้องการ
