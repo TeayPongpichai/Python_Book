@@ -104,3 +104,13 @@ score_series = pd.Series(score)
 frame = {'Name':name_series,'Age':age_series,'Score':score_series}
 df = pd.DataFrame(frame)
 df
+
+#บันทึกไฟล์ในรูปแบบ CSV
+cols = ['Name','Age']
+df.to_csv('data.csv',index=False,columns=cols) #กรณีต้องการ Index ให้อเอาออก
+
+#อ่านไฟล์ Excel ทั้งหมด ทุกคอลัมน์
+import pandas as pd
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+df
