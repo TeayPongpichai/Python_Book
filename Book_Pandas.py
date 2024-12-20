@@ -148,3 +148,57 @@ df.head()
 df.head(10)
 df.tail()
 df.sample(3) #สุุ่มเลือกแถวตามจำนวนที่ต้องการ
+
+df.dtypes #ดูชนิดของข้อมูล
+df.describe() #ดูสถิติเบื้องต้น
+df.Score.mean() #หาค่า Mean
+df.Score.min() #หาค่า Min
+df.Score.max() #หาค่า Max
+df.Score.std() #หาค่า Sd
+
+uri = 'score_ageb.csv'
+df = pd.read_csv(uri,dtype={'Section':str}) #แปลงชนิดของข้อมูลในคอลัมน์ตั้งแต่อ่านไฟล์
+print(df.dtypes) #พบว่า Section จะไม่เป็น int
+df.describe() #พบว่า Section จะไม่สามารถคำนวณได้แล้ว
+
+uri = 'score_ageb.csv'
+df = pd.read_csv(uri)
+df.Section = df.Section.astype('category') #เปลี่ยนชนิดของข้อมูลหลังจากอ่านไฟล์แล้ว
+df.dtypes
+df.describe()
+
+uri = 'score_ageb.csv'
+df = pd.read_csv(uri)
+df['Name']
+df['Name'][2:5]
+df[['Name','Score']][1:4] #เลือกหลายคอลัมน์ และหลายแถว
+
+uri = 'score_ageb.csv'
+df = pd.read_csv(uri)
+df[:]
+df[1:4] #เลือกแถว 1-3
+df[1:4].Name #เลือกแถว 1-3 เฉพาะคอลัมน์ Name
+df.loc[1:4,'Age':'Section'] #เลือกแถว 1-3 จากคอลัมน์ Age ถึง Section
+print(df)
+df.iloc[3]
+df.iloc[2]['Name'] #เลือกข้อมูลเฉพาะแถว2 จากคอลัมน์ Name
+df.iloc[2,0] #เลือกข้อมูลเฉพาะแถว2 จากคอลัมน์ 0 = Name
+df.iloc[1:4] #เลือกข้อมูลเฉพาะแถว 1-3
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri,index_col='Name')
+df
+df.loc['Tim'] #เอาเฉพาะข้อมูลในแถวนั้น
+df.loc['Tim']['Score']
+type(df.loc['Tim']['Score'])
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+df[df.Name.str.match('Kob')] #ใช้ค้นหาคำที่ขึ้นต้นด้วย Kob
+df[df.Name.str.match('Kob',case = False)] #ใช้ค้นหาคำที่ขึ้นต้นด้วย Kob โดยไม่สนใจ Case Sensitive
+df[df.Name.str.contains('Kiat',case = False)] #ใช้ค้นหาคำที่อยู่ในประโยค ไม่จำเป็นต้องขึ้นต้นประโยค
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+for idx , row in df.iterrows():
+  print(idx,row.Name,row.Score,row.Section)
