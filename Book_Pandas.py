@@ -202,3 +202,34 @@ uri = 'score_ageb.xlsx'
 df = pd.read_excel(uri)
 for idx , row in df.iterrows():
   print(idx,row.Name,row.Score,row.Section)
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+df[df.Section == 2] #เลือกเฉพาะ Sec 2
+df[df['Section']==1] #เลือกเฉพาะ Sec 1
+df[df['Score'] >= 30] #เลือกเฉพาะ Score ที่มากกว่าเท่ากับ 30
+df.loc[(df.Score>=30) & (df.Section ==2)] #เลือกเฉพาะ Score ที่มากกว่าเท่ากับ 30 และ Sec 2
+df.loc[(df.Score>=30) | (df.Section ==2)] #เลือกเฉพาะ Score ที่มากกว่าเท่ากับ 30 หรือ Sec 2
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+df.loc[(df.Age.isin([25]))] #เลือกข้อมูลให้ตรงกับใน List
+df.loc[(df.Age.isin([22,25]))] #เลือกข้อมูลให้ตรงกับใน List
+
+for idx, row in df.iterrows():
+  if row.Section == 2:
+    print(idx,row.Name,row.Score,row.Section) #Print ต่อจาก If ต้อง Indent ด้วย
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri,index_col='Name')
+df.sort_index(inplace=True) #จัดเรียงตาม Index
+df.sort_values('Score')
+df.sort_values('Score',ascending=False,inplace=True) #จัดเรียงข้อมูลจาม Score จากมากไปน้อย
+df
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+print(df)
+df.at[1,'Score'] = 38
+df.iat[1,2] = 40
+df
