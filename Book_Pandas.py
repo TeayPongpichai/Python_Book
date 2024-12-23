@@ -239,3 +239,23 @@ df = pd.read_excel(uri)
 print(df)
 df.Section.replace(1,8,inplace=True) #เปลี่ยน Section จาก 1 เป็น 8
 df
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+print(df)
+df.loc[df.Name.str.match('Kob'),'Section']=5 #ค้นหาชื่อ เพื่อเปลี่ยน Section ตามที่ต้องการ
+df.loc[df.Name.str.contains('ห์น'),'Section'] = 9 #ค้นหาชื่อ แบบ Contains คือมีบางคำในชื่อ 
+df['Score'] = np.where((df.Score >= 28) & (df.Score <= 30),32,df.Score)
+df
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+print(df)
+df['Midterm'] = df['Score']*0.5 #เพิ่มคอลัมน์
+df['M'] = df['Age'] #เพิ่มคอลัมน์โดยใช้ข้อมูลจากคอลัมน์ Age
+df['Sum'] = df['Age'] + df['Score'] #เพิ่มคอลัมน์จากการใช้ 2 คอลัมน์ บวกกัน
+df.drop('M',axis=1) #ลบคอลัมน์แต่ยังไม่มีผลกับ df
+df.drop('M',axis=1,inplace=True) #ลบคอลัมน์ออกจาก df
+cols = ['Midterm','Sum']
+df.drop(cols,axis=1,inplace=True)
+df
