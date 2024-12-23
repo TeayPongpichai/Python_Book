@@ -259,3 +259,67 @@ df.drop('M',axis=1,inplace=True) #ลบคอลัมน์ออกจาก 
 cols = ['Midterm','Sum']
 df.drop(cols,axis=1,inplace=True)
 df
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+cols = {'Score':'Point'} #เปลี่ยนชื่อคอลัมน์
+df.rename(columns=cols,inplace=True)
+df.head()
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+cols = {'Score':'Point','Section':'Sec'}
+df.rename(columns=cols,inplace=True)
+df.head()
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+datas = [['KSB',22,35,1],['KFC',23,18,2]]
+cols = ['Name','Age','Score','Section']
+newdf = pd.DataFrame(datas,columns=cols)
+newdf
+df = pd.concat([df,newdf], ignore_index=True)
+df
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+rows = 2 #ต้องการลบแถวที่ Index = 2
+df.drop(rows,axis=0,inplace=True)
+df
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+rows = [1,3,5] #ลบหลาย Rows ตาม Index ที่ต้องการ
+df.drop(rows,axis=0,inplace=True)
+df
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri,index_col='Name')
+rows = 'Tim' #ลบตาม Index ที่เป็นชื่อ
+df.drop(rows,axis=0,inplace=True)
+df
+
+%matplotlib inline
+uri = 'score_ageb.csv'
+df = pd.read_csv(uri)
+df.plot.bar() #Plot ทุกข้อมูลที่เป็นตัวเลข
+df[['Age','Score']].plot.bar() #เลือก Plot เฉพาะข้อมูลที่ต้องการ
+
+uri = 'score_ageb_forSum.csv'
+df = pd.read_csv(uri)
+cols = ['Sales1','Sales2']
+df[cols].sum() #Sum ตามคอลัมน์ที่ต้องการ
+df.groupby(['Section']).sum(['Sales1','Sales2']) #Sum ตามข้อมูลที่ต้องการ Group by
+
+uri = 'score_ageb_forSum.csv'
+df = pd.read_csv(uri)
+cols = ['Sales1','Section']
+df[cols].groupby(['Section']).sum() #เลือกคอลัมน์ พร้อม Groupby ข้อมูลที่ต้องการ
+
+import numpy as np
+df = pd.DataFrame({'age':np.random.randint(12,55,20)}) #สุ่มตัวเลขของอายุตั้งแต่ 12-55 ขึ้นมา 20 จำนวน
+groups = [12,19,30,55] #แบ่งกลุ่มช่วงอายุ
+labels = ['teen','young','old']
+df['stage'] = pd.cut(df['age'],bins=groups,labels=labels)
+df.groupby('stage').count()
+df
