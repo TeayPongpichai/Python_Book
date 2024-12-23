@@ -233,3 +233,9 @@ print(df)
 df.at[1,'Score'] = 38
 df.iat[1,2] = 40
 df
+
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri)
+print(df)
+df.Section.replace(1,8,inplace=True) #เปลี่ยน Section จาก 1 เป็น 8
+df
