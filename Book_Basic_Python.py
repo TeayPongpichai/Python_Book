@@ -57,3 +57,23 @@ print('Hi',name,'a =',a)
 print('Hi',name,'a = ',a,',','b = ',b)
 print('Hi, %s a = %d b =%.3f' %(name,a,b)) # %d คือจำนวนเต็ม %.3f คือทศนิยม 3 ตำแหน่ง
 
+def area(length):
+  area = length * length
+  return area
+b = area(5)
+print('Area = %d' %(b))
+
+def area(length):
+  area = length * length
+  return area
+if __name__ == '__main__': #__main__ มีค่าเท่ากับ name
+  b = area(4)
+  print('Area = %d' % (b))
+  print('Area =',b)
+
+cal = lambda x: x*2
+a = cal(4)
+print(a)
+
+b = cal(7)
+print(b)
