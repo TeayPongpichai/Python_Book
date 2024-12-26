@@ -39,3 +39,6 @@ import numpy as np
 pvt = df.pivot_table(index=['Quarter'],values='Sales',aggfunc=np.sum,margins=True)
 pvt.style.format({'Sales':'{:,.2f}'}) #กำหนดคอมม่าเฉพาะคอลัมน์ Sales
 pvt.applymap('${0:,.2f}'.format) #กำหนดรูปแบบ $ และมีทศนิยม เช่น $3,000.00
+
+pvt = df.pivot_table(index=['Quarter'],values=['Sales'],aggfunc=['sum','min','mean','max'],margins=True)
+pvt
