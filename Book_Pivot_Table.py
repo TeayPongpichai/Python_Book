@@ -42,3 +42,9 @@ pvt.applymap('${0:,.2f}'.format) #กำหนดรูปแบบ $ และ�
 
 pvt = df.pivot_table(index=['Quarter'],values=['Sales'],aggfunc=['sum','min','mean','max'],margins=True)
 pvt
+
+pvt = df.pivot_table(index=['Quarter'],values='Sales',aggfunc='sum')
+pvt = pvt.applymap('{0:,}'.format)
+pvt.sort_values('Sales') #เรียงจากน้อยไปมาก
+pvt = pvt.sort_values('Sales',ascending=False) #เรียงจากมากไปน้อย
+pvt
