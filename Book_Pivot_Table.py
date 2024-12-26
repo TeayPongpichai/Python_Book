@@ -17,3 +17,14 @@ df.dtypes #ดูประเภทของข้อมูลแต่ละค
 df.describe() #ดูข้อมูลสถิติที่เป็นเชิงปริมาณของ df
 df.Quarter = df.Quarter.astype('category') #เปลี่ยนประเภทข้อมูลเป็น Category เพื่อให้ describe แล้วไม่ถูกคำนวณ
 df.Sales.sum() #หาผลรวมของคอลัมน์ที่ต้องการ
+
+pvt = df[['Sales','Quarter']] #เลือกคอลัมน์ที่ต้องการใช้
+pvt = pvt.pivot_table(index='Quarter') #เลือกคอลัมน์ที่ต้องการเป็น Index ของ Pivot table และถ้าไม่กำหนด Agg ระบบจะเลือกเป็นค่าเฉลี่ยให้
+pvt = pvt.pivot_table(index='Quarter',margins=True) #มีแถวสรุปผลเพิ่มเติมให้
+pvt
+
+pvt = df[['Sales','Quarter','Employee']]
+# pvt = pvt.pivot_table(index=['Quarter','Employee'],margins=True) สามารถปรับเปลี่ยน Index โดยเรียงก่อนหลังได้
+# pvt
+pvt = pvt.pivot_table(index=['Employee','Quarter'],margins=True) 
+pvt
