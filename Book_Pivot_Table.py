@@ -28,3 +28,14 @@ pvt = df[['Sales','Quarter','Employee']]
 # pvt
 pvt = pvt.pivot_table(index=['Employee','Quarter'],margins=True) 
 pvt
+
+pvt = df[['Sales','Quarter']] #เลือกคอลัมน์ที่ต้องการใช้
+pvt = pvt.pivot_table(index=['Quarter'],values='Sales',aggfunc='sum') #ค่ารวม
+pvt = pvt.pivot_table(index=['Quarter'],values='Sales',aggfunc='mean',margins=True) #ค่าเฉลี่ย
+pvt = pvt.applymap('{0:,}'.format) #กำหนดรูปแบบ Comma
+pvt
+
+import numpy as np
+pvt = df.pivot_table(index=['Quarter'],values='Sales',aggfunc=np.sum,margins=True)
+pvt.style.format({'Sales':'{:,.2f}'}) #กำหนดคอมม่าเฉพาะคอลัมน์ Sales
+pvt.applymap('${0:,.2f}'.format) #กำหนดรูปแบบ $ และมีทศนิยม เช่น $3,000.00
