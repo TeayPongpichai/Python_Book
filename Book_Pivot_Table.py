@@ -57,3 +57,10 @@ pvt
 
 pvt = df.pivot_table(index=['Country','Quarter'],values='Sales',aggfunc='sum')
 pvt.plot.bar()
+
+pvt2 = df.pivot_table(index=['Country'],columns=['Quarter'],values=['Sales'],aggfunc='sum',fill_value=0)
+pvt2.plot.bar()
+
+pvt = df.pivot_table(index=['Country'],columns=['Quarter'],values=['Sales'],aggfunc='sum',fill_value=0,margins=True)
+pvt = pvt.applymap('{0:,}'.format)
+pvt
