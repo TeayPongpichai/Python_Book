@@ -54,3 +54,6 @@ plt.title('Sale Reprot') # Chart Title
 pvt.sort_values(['Sales'],ascending=False).plot.bar() #เรียงกราฟจากกมากไปน้อย
 pvt.plot.bar()
 pvt
+
+pvt = df.pivot_table(index=['Country','Quarter'],values='Sales',aggfunc='sum')
+pvt.plot.bar()
