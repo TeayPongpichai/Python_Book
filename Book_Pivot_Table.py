@@ -48,3 +48,9 @@ pvt = pvt.applymap('{0:,}'.format)
 pvt.sort_values('Sales') #เรียงจากน้อยไปมาก
 pvt = pvt.sort_values('Sales',ascending=False) #เรียงจากมากไปน้อย
 pvt
+
+pvt = df.pivot_table(index=['Country'],values=['Sales'],aggfunc='sum')
+plt.title('Sale Reprot') # Chart Title
+pvt.sort_values(['Sales'],ascending=False).plot.bar() #เรียงกราฟจากกมากไปน้อย
+pvt.plot.bar()
+pvt
