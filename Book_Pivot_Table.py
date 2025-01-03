@@ -80,3 +80,11 @@ pvt2.plot.bar()
 pvt = df.pivot_table(index=['Employee'],columns=['Quarter'],values=['Sales'],aggfunc='sum',fill_value = 0,margins = True)
 pvt = pvt.applymap("{0:,}".format)
 pvt
+
+pvt = df[df.Quarter == 3].pivot_table(index='Country',columns='Quarter',values='Sales',aggfunc='sum') #กรองเฉพาะไตรมาส3
+pvt = df[(df.Quarter == 1) | (df.Quarter == 3)].pivot_table(index='Country',columns='Quarter',values='Sales',aggfunc='sum') #กรองเฉพาะไตรมาส 1 
+pvt = df[(df.Quarter == 3) & (df.Sales >= 300)].pivot_table(index='Country',columns='Quarter',values='Sales',aggfunc='sum') #กรองเฉพาะไตรมาส 3 ที่มีค่ามากกว่า 300
+pvt = df[df.Country.str.match('U')].pivot_table(index='Country',columns='Quarter',values='Sales') #กรองเฉพาะประเทศที่ขึ้นต้นด้วย U
+pvt = df[df.Country.str.match('U')].pivot_table(index='Country',columns='Quarter',values='Sales',fill_value=0) #ข้อมูลที่ขึ้น NAN จะใส่ค่า = 0 แทน
+pvt = df[df.Country=='US'].pivot_table(index='Country',columns='Quarter',values='Sales',fill_value=0)
+pvt
