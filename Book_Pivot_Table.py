@@ -93,3 +93,7 @@ pvt2 = df[(df.Employee.str.match('กอบ')) | (df.Employee.str.match('Bill'))
 pvt2.plot.bar()
 pvt2 = df[(df.Employee.str.match('กอบ')) | (df.Employee.str.match('Bill'))].pivot_table(index='Employee',columns=['Quarter'],values='Sales',fill_value=0,aggfunc='sum',margins=True) #เปรียบเทียบ 2 คน ในแบบตาราง
 pvt2.plot.bar()
+
+pvt2 = df[(df.Employee.str.match('กอบ')) | (df.Employee.str.match('Bill'))].pivot_table(index='Employee',columns=['Quarter','Country'],values='Sales',fill_value=0,aggfunc='sum',margins=True) 
+#เปรียบเทียบ 2 คน โดยใช้คอลัมน์ 2 ค่า ในแบบตาราง
+pvt2.plot.bar()
