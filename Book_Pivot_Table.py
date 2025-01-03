@@ -88,3 +88,8 @@ pvt = df[df.Country.str.match('U')].pivot_table(index='Country',columns='Quarter
 pvt = df[df.Country.str.match('U')].pivot_table(index='Country',columns='Quarter',values='Sales',fill_value=0) #ข้อมูลที่ขึ้น NAN จะใส่ค่า = 0 แทน
 pvt = df[df.Country=='US'].pivot_table(index='Country',columns='Quarter',values='Sales',fill_value=0)
 pvt
+
+pvt2 = df[(df.Employee.str.match('กอบ')) | (df.Employee.str.match('Bill'))].pivot_table(index='Employee',columns=['Quarter'],values='Sales',fill_value=0,aggfunc='sum') #เปรียบเทียบ 2 คน ในแบบตาราง
+pvt2.plot.bar()
+pvt2 = df[(df.Employee.str.match('กอบ')) | (df.Employee.str.match('Bill'))].pivot_table(index='Employee',columns=['Quarter'],values='Sales',fill_value=0,aggfunc='sum',margins=True) #เปรียบเทียบ 2 คน ในแบบตาราง
+pvt2.plot.bar()
