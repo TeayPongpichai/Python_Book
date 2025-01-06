@@ -22,3 +22,43 @@ plt.bar(x,ydata) #กราฟแนวตั้ง
 plt.show()
 plt.barh(x,ydata) #กราฟแนวนอน ให้เติมเป็น barh
 plt.show()
+
+x = np.array([1,2,3,4,5,6])
+ydata = np.array([1,2.8,2.1,4,3,3.5])
+plt.bar(x,ydata)
+plt.savefig('matplot1.png') #Save Image File
+plt.show()
+plt.savefig('matplot2.png',dpi = 50,transparent = True)
+
+x = np.array([1,2,3,4,5,6])
+ydata = np.array([1,2.8,2.1,4,3,3.5])
+plt.plot(x,ydata)
+plt.show()
+
+x = [1,2,3,4,5,6]
+ydata = [1,2.8,2.1,4,3,3.5]
+ydata2 = [2.2,1.6,2.3,2,2.3,2.1]
+#x,y ทุกชุด จะต้องมีจำนวนที่เท่ากัน
+
+plt.plot(x,ydata)
+plt.plot(x,ydata2)
+plt.show() # Plot ข้อมูลเปรียเทียบกัน
+
+months = ['Jan','Feb','Mar','Apr','May','Jun']
+ydata = [1,2.8,2.1,4,3,3.5]
+expl = (0,0.15,0,0,0,0.25) #แตกชิ้นข้อมูลที่ 2 และ 6 ให้แยกออกมา
+plt.pie(ydata,explode=expl,labels=months,autopct='%.1f%%',shadow=True,startangle=90)
+plt.show()
+
+x = [1,2,3,4,5,6]
+ydata = [1,2.8,2.1,4,3,3.5]
+plt.scatter(x,ydata) # Scatter Plot
+plt.show()
+
+x = [1,2,3,4,5,6]
+ydata = [1,2.8,2.1,4,3,3.5]
+x2 = [1.1,2,3,3.9,5.1,6]
+ydata2 = [2.2,1.6,2.3,2.0,2.3,2.1]
+plt.scatter(x,ydata)
+plt.scatter(x2,ydata2)
+plt.show() #Plot Scatter ซ้อนกัน
