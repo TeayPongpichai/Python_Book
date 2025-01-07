@@ -104,5 +104,5 @@ plt.xlabel('เดือน')
 plt.ylabel('ยอดขาย')
 plt.title('รายงาน Sales Report')
 plt.legend()
-plt.ylim(0,4.5) #กำนหดค่าแกน Y
+plt.ylim(0,4.5) #กำหนดค่าแกน Y
 plt.show()
