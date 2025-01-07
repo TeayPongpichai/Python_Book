@@ -106,3 +106,26 @@ plt.title('รายงาน Sales Report')
 plt.legend()
 plt.ylim(0,4.5) #กำหนดค่าแกน Y
 plt.show()
+
+import pandas as pd
+uri = 'score_ageb.xlsx'
+df = pd.read_excel(uri) #โหลด Excel
+df.head() #ดูข้อมูล 5 แถวแรก
+#กราฟแท่ง
+df.plot.bar() #การ Plot จะใส่ Legend มาให้เลย
+cols = ['Age','Score']
+df[cols].plot.bar() #เลือก Plot เฉพาะบางคอลัมน์
+#กราฟเส้น
+df.plot.line()
+df[cols].plot.line() #เลือก Plot เฉพาะบางคอลัมน์
+#กราฟเส้นทึบ
+df.plot.area()
+df[cols].plot.area()
+#กราฟ Scatter
+df[cols].plot.scatter('Score','Age')
+#กราฟ Boxplot
+df[cols].plot.box()
+#กราฟ Histogram
+df['Age'].hist(bins=15)
+df.hist()
+df.hist('Score',by='Section',bins=15) #Histogram แบ่งตาม Section
