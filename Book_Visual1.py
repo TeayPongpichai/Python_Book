@@ -70,3 +70,39 @@ import pandas as pd
 df = pd.DataFrame(age,columns=['Age'])
 df.head() #ดูข้อมูล 5 แถวแรก
 df.Age.value_counts() #นับความถี่
+
+wt = np.random.normal(10,2.5,5000)
+plt.hist(wt)
+# plt.hist(wt,bins=50) Plot แบบแบ่งช่วงข้อมูลเป็น 50
+plt.show()
+
+age = [18,17,20,18,19,18,17,20,17,18,20,18,17,18,19,20]
+# plt.grid()
+plt.grid(linestyle='--',axis='y') #เขียนเส้นกริดตามแนวประ แกน Y
+plt.boxplot(age)
+plt.show()
+
+import pandas as pd
+import matplotlib as mpl
+%matplotlib inline
+mpl.__version__
+!wget -q https://github.com/Phonbopit/sarabun-webfont/raw/master/fonts/thsarabunnew-webfont.ttf #Get Font Thai
+#Add Font and Set up
+mpl.font_manager.fontManager.addfont('thsarabunnew-webfont.ttf')
+mpl.rc('font',family='TH Sarabun New', size=20)
+xs = [1,2,3,4,5,6]
+ydata = [1,2.8,2.1,4,3,3.5]
+ydata2 = [2.2,1.6,2.3,2,2.3,2.1]
+plt.figure(figsize=(6,4))
+plt.grid(linestyle='--',axis='y') #แสดง Grid เฉพาะแกน Y
+plt.bar(x,ydata,color='c',width=0.5,label='ในประเทศ')
+plt.bar([x + 0.2 for x in xs], #ระยะขยับของกราฟแต่ละแท่ง
+        ydata2,width=0.5,color='orange',alpha=0.8,label='ส่งออก')
+plt.plot(x,ydata,color='b',marker='s',markersize=8) # b=blue
+plt.plot(x,ydata2,color='r',marker='s',markersize=8) # r=red
+plt.xlabel('เดือน')
+plt.ylabel('ยอดขาย')
+plt.title('รายงาน Sales Report')
+plt.legend()
+plt.ylim(0,4.5) #กำนหดค่าแกน Y
+plt.show()
