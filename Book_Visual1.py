@@ -62,3 +62,12 @@ ydata2 = [2.2,1.6,2.3,2.0,2.3,2.1]
 plt.scatter(x,ydata)
 plt.scatter(x2,ydata2)
 plt.show() #Plot Scatter ซ้อนกัน
+
+age = [18,17,20,18,19,18,17,20,17,18,20,18,17,18,19,20]
+plt.hist(age)
+plt.show()
+
+import pandas as pd
+df = pd.DataFrame(age,columns=['Age'])
+df.head() #ดูข้อมูล 5 แถวแรก
+df.Age.value_counts() #นับความถี่
