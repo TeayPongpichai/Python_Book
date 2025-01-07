@@ -66,7 +66,6 @@ plt.show() #Plot Scatter ซ้อนกัน
 age = [18,17,20,18,19,18,17,20,17,18,20,18,17,18,19,20]
 plt.hist(age)
 plt.show()
-
 import pandas as pd
 df = pd.DataFrame(age,columns=['Age'])
 df.head() #ดูข้อมูล 5 แถวแรก
