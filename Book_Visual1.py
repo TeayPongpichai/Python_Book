@@ -143,3 +143,9 @@ df.info() #ใช้ Info ดีกว่า dtypes เพราะได้ร�
 df.describe() #Size คือจำนวนโต๊ะ ควรเปลี่ยนข้อมูลเป็นแบบ Category
 df['size'] = df['size'].astype('category')
 df.dtypes
+
+#สรุปความถี่
+df['size'].value_counts() #นับจำนวนตามประเภทโต๊ะ
+pd.DataFrame(df['size'].value_counts())
+pvt = df.pivot_table(index='size',values='total_bill',aggfunc='count')
+pvt.sort_values(by='total_bill',ascending=False) #เรียงจากมากไปน้อย
