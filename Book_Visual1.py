@@ -129,3 +129,14 @@ df[cols].plot.box()
 df['Age'].hist(bins=15)
 df.hist()
 df.hist('Score',by='Section',bins=15) #Histogram แบ่งตาม Section
+
+#Seaborn
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+df = sns.load_dataset('tips')
+df.head()
+df.tail()
+df.sample(5) #สุุ่มข้อมูล 5 แถว
+df.dtypes
+df.info() #ใช้ Info ดีกว่า dtypes เพราะได้รู้เรื่อง null ด้วย
