@@ -149,3 +149,9 @@ df['size'].value_counts() #นับจำนวนตามประเภท�
 pd.DataFrame(df['size'].value_counts())
 pvt = df.pivot_table(index='size',values='total_bill',aggfunc='count')
 pvt.sort_values(by='total_bill',ascending=False) #เรียงจากมากไปน้อย
+
+#ตกแต่งกราฟ
+sns.set_style('whitegrid') #พื้นขาว มีเส้นตาราง
+sns.set_style('darkgrid') #พื้นเทา มีเส้นตาราง
+sns.set_style('white') #พื้นขาว ไม่มีเส้นตาราง
+sns.set_style('dark') #พื้นเทา ไม่มีเส้นตาราง
