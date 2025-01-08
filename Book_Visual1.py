@@ -140,3 +140,6 @@ df.tail()
 df.sample(5) #สุุ่มข้อมูล 5 แถว
 df.dtypes
 df.info() #ใช้ Info ดีกว่า dtypes เพราะได้รู้เรื่อง null ด้วย
+df.describe() #Size คือจำนวนโต๊ะ ควรเปลี่ยนข้อมูลเป็นแบบ Category
+df['size'] = df['size'].astype('category')
+df.dtypes
